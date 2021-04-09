@@ -24,8 +24,15 @@
 	    		}
 
 				if (isset($_GET['short']) && $_GET['short'] != false) {
-					echo '<meta http-equiv="refresh" content="0;URL=' . receiving::getUrlById($_GET['short']) . '">';
+					$url = receiving::getUrlById($_GET['short']);
+					if ($url == false) {
+						echo '<meta http-equiv="refresh" content="0;URL=http://example.io/404.html">';
+					}
+					else {
+						echo '<meta http-equiv="refresh" content="0;URL=' . receiving::getUrlById($_GET['short']) . '">';
+					}
 				}
+
 			?>
 		</div>
 
